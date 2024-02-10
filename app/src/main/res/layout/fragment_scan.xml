@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scan_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:background="@android:color/white"
+    tools:context=".main.scan.ScanFragment">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/cameraPreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.msah.mobilepos.main.scan.ViewFinderOverlay
+        android:id="@+id/overlay"
+        android:layerType="software"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:fitsSystemWindows="true"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvScanningWith"
+            android:textStyle="bold"
+            android:text="@string/google_ml_kit"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/ivScannerLogo"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:src="@drawable/mlkit_icon"
+            android:adjustViewBounds="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/scanner_library" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivFlashControl"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_margin="16dp"
+        android:background="@drawable/flash_button_background"
+        android:contentDescription="@string/turn_flash_on_off"
+        android:padding="12dp"
+        android:src="@drawable/ic_round_flash_on" />
+
+</FrameLayout>
+</layout>

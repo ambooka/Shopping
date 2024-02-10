@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "74439766351",
+    "firebase_url": "https://mobile-pos-6d61e-default-rtdb.firebaseio.com",
+    "project_id": "mobile-pos-6d61e",
+    "storage_bucket": "mobile-pos-6d61e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74439766351:android:bdc345cc6f390ba100953a",
+        "android_client_info": {
+          "package_name": "com.msah.mobilepos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc3ZjlbJgN_wjxB5FPHA0hA2-Ls7GCwoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
