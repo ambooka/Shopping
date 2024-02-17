@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.msah.mobilepos.utils.Constants
 import kotlinx.coroutines.flow.first
+import java.time.LocalDate
 
 class UserPref(var context: Context) {
 
@@ -33,6 +34,26 @@ class UserPref(var context: Context) {
     suspend fun setEmail(email:String){
         context.ds.edit {
             it[KEY_EMAIL] = email
+        }
+    }
+
+
+    suspend fun setAddress(address:String){
+        context.ds.edit {
+            it[KEY_USERNAME] = address
+        }
+    }
+
+
+    suspend fun setOrders(orders:String){
+        context.ds.edit {
+            it[KEY_USERNAME] = orders
+        }
+    }
+
+    suspend fun setDateJoined(dateJoined:LocalDate){
+        context.ds.edit {
+            it[KEY_USERNAME] = dateJoined.toString()
         }
     }
 

@@ -7,6 +7,7 @@ import com.msah.mobilepos.data.model.DataState
 import com.msah.mobilepos.data.model.User
 import com.msah.mobilepos.data.repository.auth.AuthRepository
 import com.msah.mobilepos.data.repository.user.UserRepository
+import java.time.LocalDate
 
 class SignUpViewModel(
     private val authRepository: AuthRepository,
@@ -16,10 +17,10 @@ class SignUpViewModel(
     val userLiveData = MutableLiveData<DataState<User>>()
     private lateinit var user: User
 
-    fun onSignUpClicked(username: String, email: String, password: String, passwordAgain: String){
+    fun onSignUpClicked(username: String, email: String, address: String, password: String, passwordAgain: String){
 
         userLiveData.value = DataState.Loading()
-        user = User(email, password, passwordAgain, username)
+        user = User(email, password, passwordAgain, username, address, orders = "0", dateJoined = LocalDate.now())
         checkFields()
 
     }

@@ -4,24 +4,24 @@ import android.os.Parcelable
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.time.LocalDate
+
 
 @Parcelize
 data class Product(
-    @SerializedName("category")
-    val category: String?,
+    @SerializedName("name")
+    var name: String? = "",
     @SerializedName("description")
-    val description: String?,
+    var description: String? = "",
     @SerializedName("id")
-    val id: Int?,
-    @SerializedName("image")
-    val image: String?,
+    var id: String? = "",
     @SerializedName("price")
-    val price: Double?,
-    @SerializedName("rating")
-    val rating: Rating?,
-    @SerializedName("title")
-    val title: String?
-): Parcelable {
+    var price: Double? = 0.0,
+    @SerializedName("quantity")
+    var quantity: Int = 0,
+    @SerializedName("imgUrl")
+    var imgUrl: String = ""
+) : Parcelable {
 
     // json convert method
     fun toJson(): String {

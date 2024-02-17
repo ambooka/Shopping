@@ -16,15 +16,16 @@ import com.msah.mobilepos.databinding.FragmentScanBinding
 import com.msah.mobilepos.loadingprogress.LoadingProgressBar
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import android.content.Context
 import android.util.Size
 import android.view.OrientationEventListener
 import android.view.Surface
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.TorchState
+import androidx.navigation.fragment.findNavController
+import com.msah.mobilepos.data.model.Product
 import com.msah.mobilepos.productdetail.ProductDetailsFragment
 import com.msah.mobilepos.utils.Constants
 
@@ -104,6 +105,34 @@ class ScanFragment : Fragment() {
                 imageAnalysis.targetRotation = rotation
             }
         }
+
+        fun generateProductList(): List<Product> {
+            return listOf(
+                Product(
+                    description = "A powerful and versatile laptop for everyday use.",
+                    id = "5034624108328",
+                    imgUrl = "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+                    price = 799.00,
+                    name = "Laptop X10"
+                ),
+                Product(
+                    description = "A captivating novel about love, loss, and redemption.",
+                    id = "5034724308328",
+                    imgUrl = "https://example.com/book.jpg",
+                    price = 15.00,
+                    name = "The Book of Lost Things"
+                ),
+                Product(
+                    description = "A cozy throw blanket to keep you warm on chilly nights.",
+                    id = "5034624308328",
+                    imgUrl = "https://example.com/blanket.jpg",
+                    price = 39.00,
+                    name = "Soft Fleece Blanket"
+                ),
+                // Add more products as needed
+            )
+        }
+
         orientationEventListener.enable()
 
         class ScanningListener : ScanningResultListener {
@@ -113,16 +142,34 @@ class ScanFragment : Fragment() {
                     cameraProvider?.unbindAll()
 
 
+                    for (product in generateProductList()) {
+                        if (product.id == result) {
+                            val prod = Product(
+                                description = "A powerful and versatile laptop for everyday use.",
+                                id = "5034624108328",
+                                imgUrl = "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+                                price = 799.00,
+                                name = "Laptop X10"
+                            )
 
 
-                    val bundle = Bundle().apply {
-                       // putString(Constants.PRODUCT_MODEL_NAME, product?.toJson()) // Assuming product is your data object
+                            val bundle = Bundle().apply { putString(
+                                Constants.PRODUCT_MODEL_NAME,
+                                prod.toJson())
+                            }
+
+
+                            findNavController().navigate(R.id.action_searchFragment_to_productDetailsFragment, bundle)
+
+//                            ProductDetailsFragment().run {
+//                                arguments = bundle
+//                                show(parentFragmentManager, "Details")
+//                            }
+                            break
+                        }else{
+                            Toast.makeText(context, "PRODUCT $result NOT FOUND", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                    ProductDetailsFragment().run {
-                        arguments = bundle
-                        show(parentFragmentManager, "Details")
-                    }
-
                 }
             }
         }

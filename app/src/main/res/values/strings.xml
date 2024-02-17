@@ -72,6 +72,7 @@
     <string name="scan">Scan</string>
     <string name="result">Code</string>
     <string name="copy">Copy</string>
+    <string name="address">Address</string>
 
 
 </resources>

@@ -26,7 +26,6 @@ class BasketRepositoryImpl : BasketRepository {
             .document(FirebaseAuth.getInstance().uid!!)
             .collection(Constants.DATABASE_PRODUCTS_TABLE)
             .document(productBasket.id.toString())
-
     }
 
     override fun addProductsToBasket(productBasket: ProductBasket): Task<Void> {

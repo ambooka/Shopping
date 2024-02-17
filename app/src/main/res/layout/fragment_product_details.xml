@@ -47,7 +47,7 @@
                     android:layout_height="250dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_barcode"
-                    app:imageUrl="@{dataHolder.image}"
+                    app:imageUrl="@{dataHolder.imgUrl}"
                     android:layout_marginTop="20dp"
                     android:paddingHorizontal="10dp"/>
 
@@ -67,49 +67,8 @@
                         android:textStyle="bold"
                         android:maxLines="2"
                         android:ellipsize="end"
-                        android:text="@{dataHolder.title}"/>
+                        android:text="@{dataHolder.name}"/>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp">
-
-                        <RatingBar
-                            android:id="@+id/rbRate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:max="5"
-                            android:numStars="5"
-                            android:progressTint="@color/rating_bar_color"
-                            android:progressBackgroundTint="@color/gray"
-                            android:secondaryProgressTint="@color/rating_bar_color"
-                            android:rating="@{dataHolder.rating.rate.floatValue()}"
-                            android:stepSize="0.1"
-                            style="?android:attr/ratingBarStyleSmall" />
-
-                        <TextView
-                            android:id="@+id/tvRate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/black_secondary"
-                            android:textSize="13sp"
-                            android:layout_marginStart="5dp"
-                            android:text="@{dataHolder.rating.rate.toString()}"/>
-
-                        <TextView
-                            android:id="@+id/tvRatingCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/black_secondary"
-                            android:textSize="13sp"
-                            android:layout_marginStart="10dp"
-                            android:text="@{@string/rating_count(dataHolder.rating.count.toString())}"/>
-
-                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvDesc"

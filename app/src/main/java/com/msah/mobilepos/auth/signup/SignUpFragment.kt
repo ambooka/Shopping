@@ -84,6 +84,9 @@ class SignUpFragment : Fragment() {
 
             userPref.setUsername(user.username!!)
             userPref.setEmail(user.email!!)
+            userPref.setAddress((user.address!!))
+            userPref.setOrders((user.orders!!))
+            userPref.setDateJoined((user.dateJoined!!))
 
             findNavController().navigate(R.id.action_authFragment_to_mainMenuFragment)
 
