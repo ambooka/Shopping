@@ -40,7 +40,7 @@ class ProductDetailViewModel(private val basketRepository: BasketRepository) : V
         val productBasket = ProductBasket(
             product.id,
             product.name,
-            product.imgUrl,
+            product.imageURL,
             product.price,
             productCountLiveData.value
         )

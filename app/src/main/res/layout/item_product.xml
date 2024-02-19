@@ -29,7 +29,7 @@
             android:padding="6dp"
             android:layout_height="100dp"
             android:adjustViewBounds="true"
-            app:imageUrl="@{dataHolder.imgUrl}"/>
+            app:imageUrl="@{dataHolder.imageURL}"/>
 
         <LinearLayout
             android:layout_width="match_parent"

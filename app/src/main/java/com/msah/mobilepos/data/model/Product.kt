@@ -19,8 +19,8 @@ data class Product(
     var price: Double? = 0.0,
     @SerializedName("quantity")
     var quantity: Int = 0,
-    @SerializedName("imgUrl")
-    var imgUrl: String = ""
+    @SerializedName("imageURL")
+    var imageURL: String = ""
 ) : Parcelable {
 
     // json convert method

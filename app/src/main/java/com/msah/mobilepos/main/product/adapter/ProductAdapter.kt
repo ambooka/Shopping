@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import com.msah.mobilepos.R
@@ -38,6 +39,7 @@ class ProductAdapter (context: Context, productList: List<Product?>, private val
         val product: Product? = getItem(position)
         binding.dataHolder = product
         binding.llProductItem.setOnClickListener {
+
             goProductDetails(product)
         }
 

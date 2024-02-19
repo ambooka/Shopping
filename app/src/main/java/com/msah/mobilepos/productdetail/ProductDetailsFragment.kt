@@ -75,8 +75,6 @@ class ProductDetailsFragment : BottomSheetDialogFragment() {
     }
 
 
-
-
     private fun getBundleArguments(){
 
         arguments?.let {
