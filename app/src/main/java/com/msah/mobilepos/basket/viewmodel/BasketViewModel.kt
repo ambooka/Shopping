@@ -10,7 +10,11 @@ import com.msah.mobilepos.data.repository.basket.BasketRepository
 
 class BasketViewModel(private val basketRepository: BasketRepository) : ViewModel() {
 
+    private var _basketCountLivedata = MutableLiveData<Int>()
     private var _basketTotalLiveData = MutableLiveData<Int>()
+
+    val basketCountLiveData: LiveData<Int>
+        get() = _basketCountLivedata
     val basketTotalLiveData: LiveData<Int>
         get() = _basketTotalLiveData
 
@@ -33,6 +37,7 @@ class BasketViewModel(private val basketRepository: BasketRepository) : ViewMode
 
     init {
         _basketTotalLiveData.value = 0
+        _basketCountLivedata.value = 0
         getProductsBasket()
     }
 
@@ -54,6 +59,9 @@ class BasketViewModel(private val basketRepository: BasketRepository) : ViewMode
 
                     _basketLiveData.value = DataState.Success(basketList)
                     _basketTotalLiveData.value = total.toInt()
+                    if (value != null) {
+                        _basketCountLivedata.value = value.count()
+                    }
 
                 }else{
                     _basketLiveData.value = DataState.Error(error.message!!)

@@ -36,6 +36,7 @@
     <string name="profile">Profile</string>
     <string name="no_data">No data</string>
     <string name="currency_unit">Ksh %.2f</string>
+    <string name="total">%d</string>
 
     <!-- Product Details -->
     <string name="rating_count">%s Rating</string>

@@ -30,10 +30,6 @@ class ProductDetailsFragment : BottomSheetDialogFragment() {
             BasketRepositoryImpl()
         )
     }
-
-
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         bnd = DataBindingUtil.inflate(inflater, R.layout.fragment_product_details, container, false)
         return bnd.root

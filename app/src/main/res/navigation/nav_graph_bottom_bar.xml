@@ -19,7 +19,7 @@
         android:name="com.msah.mobilepos.main.scan.ScanFragment"
         android:label="ScanFragment" >
         <action
-            android:id="@+id/action_searchFragment_to_productDetailsFragment"
+            android:id="@+id/action_scanFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
     </fragment>
     <fragment

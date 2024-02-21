@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -46,8 +46,7 @@
                 android:layout_gravity="end"
                 android:gravity="end">
 
-                <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutforprofileimage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -73,34 +72,34 @@
 
                     <TextView
                         android:id="@+id/tvTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="16dp"
+                        android:layout_height="17dp"
+                        android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
                         android:adjustViewBounds="true"
+                        android:background="@drawable/badge_background"
                         android:gravity="center"
-                        android:minHeight="17sp"
                         android:minWidth="17sp"
+                        android:minHeight="17sp"
                         android:padding="3dp"
-                        android:paddingBottom="1dp"
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
+                        android:paddingBottom="1dp"
                         android:scaleType="fitStart"
-                        android:text="3"
+                        android:text="@{@string/total(count)}"
                         android:textColor="#ffffff"
-                        android:textSize="12sp"
+                        android:textSize="8sp"
                         android:visibility="visible"
-                        android:background="@drawable/badge_background"
                         app:layout_constraintBottom_toBottomOf="@+id/btnOpenCart"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/btnOpenCart"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="SmallSp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

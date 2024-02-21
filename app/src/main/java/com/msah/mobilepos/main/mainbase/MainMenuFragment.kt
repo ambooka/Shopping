@@ -42,7 +42,7 @@ class MainMenuFragment : Fragment() {
 
         bnd.mainMenuFragment = this
 
-        viewModel.basketTotalLiveData.observe(viewLifecycleOwner){
+        viewModel.basketCountLiveData.observe(viewLifecycleOwner){
             bnd.count = it
         }
 
@@ -55,9 +55,6 @@ class MainMenuFragment : Fragment() {
 
 
     }
-
-
-
 
 
     fun openBasket(){
