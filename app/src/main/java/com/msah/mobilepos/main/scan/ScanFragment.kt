@@ -152,7 +152,6 @@ class ScanFragment : Fragment() {
                             imageAnalysis.setAnalyzer(cameraExecutor, analyzer)
                             preview.setSurfaceProvider(bnd.cameraPreview.surfaceProvider)
 
-
                         } else {
                             Toast.makeText(context, "PRODUCT NOT FOUND", Toast.LENGTH_SHORT).show()
                         }
