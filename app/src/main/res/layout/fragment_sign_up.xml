@@ -48,6 +48,20 @@
                 android:autofillHints="emailAddress"/>
 
 
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="20sp"
+                android:inputType="phone"
+                android:hint="@string/phone"
+                android:background="@drawable/bg_auth_text_field"
+                android:layout_marginTop="10dp"
+                android:autofillHints="phoneNumber"/>
+
+
+
 
             <EditText
                 android:id="@+id/etAddress"
@@ -93,7 +107,7 @@
                 android:layout_marginTop="15dp"
                 app:backgroundTint="@null"
                 android:background="@drawable/bg_auth_button"
-                android:onClick="@{() -> viewModel.onSignUpClicked(etUsername.getText().toString(), etEmail.getText().toString(), etAddress.getText().toString(), etPassword.getText().toString(), etPasswordAgain.getText().toString())}"/>
+                android:onClick="@{() -> viewModel.onSignUpClicked(etUsername.getText().toString(), etPhone.getText().toString(), etEmail.getText().toString(), etAddress.getText().toString(), etPassword.getText().toString(), etPasswordAgain.getText().toString())}"/>
 
         </LinearLayout>
 

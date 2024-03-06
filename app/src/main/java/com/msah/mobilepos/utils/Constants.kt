@@ -6,6 +6,8 @@ object Constants {
     const val DATABASE_BASKET_TABLE = "carts"
     const val DATABASE_PRODUCTS_TABLE = "products"
     const val DATABASE_PRODUCTS_TABLE_PIECE_FIELD = "piece"
+    const val DATABASE_BASKET_STATUS_FIELD = "status"
+
 
     const val DATABASE_FIELD_USERNAME = "username"
     const val DATABASE_FIELD_UID = "uid"

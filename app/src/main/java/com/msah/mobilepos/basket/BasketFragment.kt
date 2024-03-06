@@ -127,6 +127,7 @@ class BasketFragment : BottomSheetDialogFragment(), ProductPieceUpdateListener {
                 is DataState.Loading -> {
                     loadingProgressBar.show()
                 }
+
             }
 
         }
@@ -141,7 +142,9 @@ class BasketFragment : BottomSheetDialogFragment(), ProductPieceUpdateListener {
             AlertDialog.Builder(requireContext())
                 .setMessage(resources.getString(R.string.purchase_message))
                 .setPositiveButton(resources.getString(R.string.continue_)) { dialog, _ ->
+                   // context?.let { viewModel.makePayment(it) }
                     dialog.cancel()
+
                     viewModel.clearTheBasket()
                 }.setNegativeButton(resources.getString(R.string.cancel)){ dialog, _ ->
                     dialog.cancel()

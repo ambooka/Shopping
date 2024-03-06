@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.msah.mobilepos.R
+import com.msah.mobilepos.auth.signin.viewmodel.SignInViewModel
 import com.msah.mobilepos.data.model.DataState
 import com.msah.mobilepos.data.model.User
 import com.msah.mobilepos.data.preference.UserPref
 import com.msah.mobilepos.data.repository.auth.AuthRepositoryImpl
 import com.msah.mobilepos.data.repository.user.UserRepositoryImpl
-import com.msah.mobilepos.auth.signin.viewmodel.SignInViewModel
 import com.msah.mobilepos.auth.signin.viewmodel.SignInViewModelFactory
 import com.msah.mobilepos.databinding.FragmentSignInBinding
 import com.msah.mobilepos.loadingprogress.LoadingProgressBar
@@ -83,9 +83,9 @@ class SignInFragment : Fragment() {
 
         val userPref = UserPref(requireContext())
         CoroutineScope(Dispatchers.Main).launch {
-
             userPref.setUsername(user.username!!)
             userPref.setEmail(user.email!!)
+            userPref.setAccType("CUSTOMER")
 
             findNavController().navigate(R.id.action_authFragment_to_mainMenuFragment)
 

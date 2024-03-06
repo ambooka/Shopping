@@ -17,12 +17,11 @@ class SignUpViewModel(
     val userLiveData = MutableLiveData<DataState<User>>()
     private lateinit var user: User
 
-    fun onSignUpClicked(username: String, email: String, address: String, password: String, passwordAgain: String){
+    fun onSignUpClicked(username: String, phone: String, email: String, address: String, password: String, passwordAgain: String){
 
         userLiveData.value = DataState.Loading()
-        user = User(email, password, passwordAgain, username, address, orders = "0", dateJoined = LocalDate.now())
+        user = User(email, password, phone, passwordAgain, username, address, orders = "0", dateJoined = LocalDate.now().toString())
         checkFields()
-
     }
 
     private fun checkFields(){
@@ -56,12 +55,14 @@ class SignUpViewModel(
         authRepository.signUp(user)
             .addOnSuccessListener {
                 user.uid = it.user!!.uid
+                user.email = it.user!!.email
+                user.username = user.username
+                user.phone = user.phone
                 userAddDatabase()
             }
             .addOnFailureListener { e ->
                 userLiveData.value = DataState.Error(e.message!!)
             }
-
     }
 
     private fun userAddDatabase(){

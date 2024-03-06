@@ -9,12 +9,13 @@ import java.util.Date
 data class User(
     var email: String? = "",
     var password: String? = "",
+    var phone: String? = "",
     var passwordAgain: String? = "",
     var username: String? = "",
     var uid: String? = "",
     var address: String? = "",
     var orders: String? = "",
-    var dateJoined: LocalDate =  LocalDate.now()
+    var dateJoined: String =  LocalDate.now().toString()
 
 ) {
 

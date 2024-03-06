@@ -139,14 +139,6 @@ class ScanFragment : Fragment() {
                                 show(this@ScanFragment.parentFragmentManager, "Details")
                             }
 
-                            if (productDetailsFragment.dialog != null && productDetailsFragment.dialog!!.isShowing && !productDetailsFragment.isRemoving) {
-                                Toast.makeText(context, "Showing", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(context, "Not Showing", Toast.LENGTH_SHORT).show()
-
-                            }
-
-
                             var analyzer: ImageAnalysis.Analyzer = MLKitBarcodeAnalyzer(ScanningListener())
 
                             imageAnalysis.setAnalyzer(cameraExecutor, analyzer)

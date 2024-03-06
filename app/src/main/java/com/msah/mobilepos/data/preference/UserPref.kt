@@ -18,18 +18,42 @@ class UserPref(var context: Context) {
         val KEY_USERNAME = stringPreferencesKey("USERNAME")
         val KEY_EMAIL = stringPreferencesKey("EMAIL")
         val KEY_IS_FIRST_USAGE = booleanPreferencesKey("IS_FIRST_USAGE")
-    }
+        val KEY_PHONE = stringPreferencesKey("PHONE")
+        val KEY_DATE = stringPreferencesKey("DATE")
+        val KEY_ADDRESS = stringPreferencesKey("ADDRESS")
+        val KEY_ORDERS = stringPreferencesKey("ORDERS")
+        val KEY_TYPE = stringPreferencesKey("TYPE")
 
+
+    }
     suspend fun setUsername(username:String){
         context.ds.edit {
             it[KEY_USERNAME] = username
         }
     }
 
+
+
     suspend fun getUsername():String{
         val p = context.ds.data.first()
         return p[KEY_USERNAME] ?: ""
     }
+
+
+
+    suspend fun setAccType(type:String){
+        context.ds.edit {
+            it[KEY_TYPE] = type
+        }
+    }
+
+
+
+    suspend fun getAccType():String{
+        val p = context.ds.data.first()
+        return p[KEY_TYPE] ?: ""
+    }
+
 
     suspend fun setEmail(email:String){
         context.ds.edit {
@@ -38,22 +62,43 @@ class UserPref(var context: Context) {
     }
 
 
-    suspend fun setAddress(address:String){
+    suspend fun setPhone(username:String){
         context.ds.edit {
-            it[KEY_USERNAME] = address
+            it[KEY_PHONE] = username
         }
     }
 
+
+
+    suspend fun getPhone():String{
+        val p = context.ds.data.first()
+        return p[KEY_PHONE] ?: ""
+    }
+
+
+    suspend fun setAddress(address:String){
+        context.ds.edit {
+            it[KEY_ADDRESS] = address
+        }
+    }
+
+
+
+
+    suspend fun getOrders():String{
+        val p = context.ds.data.first()
+        return p[KEY_ORDERS] ?: ""
+    }
 
     suspend fun setOrders(orders:String){
         context.ds.edit {
-            it[KEY_USERNAME] = orders
+            it[KEY_ORDERS] = orders
         }
     }
 
-    suspend fun setDateJoined(dateJoined:LocalDate){
+    suspend fun setDateJoined(dateJoined:String){
         context.ds.edit {
-            it[KEY_USERNAME] = dateJoined.toString()
+            it[KEY_DATE] = dateJoined.toString()
         }
     }
 
@@ -79,5 +124,10 @@ class UserPref(var context: Context) {
         }
         setFirstUsage(false)
     }
+
+
+
+
+
 
 }

@@ -2,6 +2,7 @@ package com.msah.mobilepos.auth.signin.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.toObject
 import com.msah.mobilepos.R
 import com.msah.mobilepos.data.model.DataState
 import com.msah.mobilepos.data.model.User
@@ -51,6 +52,7 @@ class SignInViewModel(
             if(task.isSuccessful) {
 
                 user.uid = task.result.user?.uid
+
                 getUserFirestore(user)
 
             }else {
@@ -63,11 +65,16 @@ class SignInViewModel(
 
     private fun getUserFirestore(user: User){
 
+
         userRepository.getUserData(user).addSnapshotListener { value, error ->
 
             if(error == null){
 
                 user.username = value?.toObject(User::class.java)?.username
+                user.email = value?.toObject(User::class.java)?.email
+                user.phone = value?.toObject(User::class.java)?.phone
+                user.orders = value?.toObject(User::class.java)?.orders
+                user.address = value?.toObject(User::class.java)?.address
                 userLiveData.value = DataState.Success(user)
 
             }else{

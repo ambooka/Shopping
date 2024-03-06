@@ -59,6 +59,8 @@ class ProductDetailViewModel(private val basketRepository: BasketRepository) : V
                     }else{
                         firestoreProduct.piece = (firestoreProduct.piece!! + productBasket.piece!!)
                         updateProduct(firestoreProduct)
+
+
                     }
 
                 }else{
@@ -70,6 +72,9 @@ class ProductDetailViewModel(private val basketRepository: BasketRepository) : V
             }
 
     }
+
+
+
 
     private fun addProductsToBasket(productBasket: ProductBasket){
 

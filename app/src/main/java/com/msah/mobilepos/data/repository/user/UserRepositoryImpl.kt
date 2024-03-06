@@ -11,7 +11,12 @@ import com.msah.mobilepos.utils.Constants.DATABASE_FIELD_USERNAME
 
 class UserRepositoryImpl : UserRepository {
 
+
+
+
+
     override fun getUserData(user: User): DocumentReference {
+
 
         return Firebase.firestore.collection(Constants.DATABASE_USERS_TABLE)
             .document(user.uid!!)
@@ -23,6 +28,12 @@ class UserRepositoryImpl : UserRepository {
         val userMap = hashMapOf(
             DATABASE_FIELD_USERNAME to user.username,
             DATABASE_FIELD_UID to user.uid,
+            "email" to user.email,
+            "address" to user.address,
+            "phone" to user.phone,
+            "dateJoined" to user.dateJoined,
+            "orders" to user.orders,
+
         )
 
         return Firebase.firestore.collection(Constants.DATABASE_USERS_TABLE)

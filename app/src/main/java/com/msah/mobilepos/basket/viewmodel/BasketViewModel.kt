@@ -1,12 +1,22 @@
 package com.msah.mobilepos.basket.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.airbnb.lottie.parser.IntegerParser
+import com.google.firebase.auth.FirebaseAuth
 import com.msah.mobilepos.R
+import com.msah.mobilepos.basket.MpesaStkPush
 import com.msah.mobilepos.data.model.DataState
+import com.msah.mobilepos.data.model.Order
 import com.msah.mobilepos.data.model.ProductBasket
+import com.msah.mobilepos.data.preference.UserPref
 import com.msah.mobilepos.data.repository.basket.BasketRepository
+import com.msah.mobilepos.data.repository.user.UserRepositoryImpl
+import kotlinx.coroutines.launch
+import java.util.UUID
 
 class BasketViewModel(private val basketRepository: BasketRepository) : ViewModel() {
 
@@ -112,6 +122,12 @@ class BasketViewModel(private val basketRepository: BasketRepository) : ViewMode
 
     }
 
+
+
+
+
+
+
     private fun deleteProduct(productBasket: ProductBasket){
 
         basketRepository.deleteProducts(productBasket)
@@ -124,13 +140,45 @@ class BasketViewModel(private val basketRepository: BasketRepository) : ViewMode
 
     }
 
+
+
     fun clearTheBasket(){
+        val orderId = UUID.randomUUID().toString()
+        val uid =  FirebaseAuth.getInstance().currentUser!!.uid
+
+        val  status = "PENDING"
+        val processedBy =""
+        val orderItems : MutableList<String> = mutableListOf()
 
         basketList.forEach {
+            it.id?.let { it1 -> orderItems.add(it1) }
             deleteProduct(it)
+
         }
+        val order = Order(uid, orderItems, processedBy, status)
+        addProductToOrder(order, orderId)
 
         _purchaseLiveData.value = DataState.Success(R.string.purchase_success_message)
+
+    }
+
+    private fun addProductToOrder(order: Order, orderId: String){
+
+        basketRepository.addProductToOrder(order, orderId)
+
+    }
+
+    fun makePayment(context:Context){
+        val mpesaStkPush = MpesaStkPush()
+        val userPref = UserPref(context)
+
+        viewModelScope.launch {
+            val paymentNo = userPref.getPhone()
+            mpesaStkPush.sendRequest(basketTotalLiveData.value, paymentNo.toLong())
+
+        }
+
+
 
     }
 
